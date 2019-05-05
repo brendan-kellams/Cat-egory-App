@@ -1,9 +1,11 @@
 import axios from 'axios'
 
-export function fetchRandomCat(res) {
+export function fetchRandomCat() {
   // TODO - fetch json from the http://aws.random.cat/meow or a similar random cat API
-  axios.get(`http://aws.random.cat/meow`)
-    .then(res => res.json())
-  console.log(res);
+  return axios.get(`http://aws.random.cat/meow`)
+    .then(res => {
+      return res.data
+    })
+  console.log();
   throw new Error("not implemented")
 }
