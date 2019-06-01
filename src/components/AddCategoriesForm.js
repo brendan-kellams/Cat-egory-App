@@ -1,19 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react';
+import CategoryContext from '../context/categoryContext';
 
-export const Categories = () => {
+export const AddCategoriesForm = () => {
   const [categories, setCategories] = useState({});
-  const [name, setName] = useState('')
+  const [name, setName] = useState('');
+  const { dispatch } = useContext(CategoryContext);
 
   const addCategory = (e) => {
     e.preventDefault();
-    setCategories({
-      ...categories,
+    dispatch({
+      type: 'ADD_CATEGORY',
       name
     })
-    Object.assign(categories, { name })
-
-    console.log('yay you added ' + name);
-    console.log(categories);
+    setName('')
   }
 
   return (
@@ -22,14 +21,8 @@ export const Categories = () => {
         <input value={name} onChange={(e) => setName(e.target.value)} />
         <button>Save</button>
       </form>
-      {Object.keys(categories).map((category) => (
-        <div key={name}>
-          <p>{name}</p>
-        </div>
-      ))}
     </div>
   )
-
 }
 
 

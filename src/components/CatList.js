@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import CategoryContext from '../context/categoryContext';
 
 
 export class CatList extends React.Component {
